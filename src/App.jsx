@@ -1,5 +1,4 @@
 import React from "react";
-import Typography from '@mui/material/Typography';
 import TicTacToe from './TicTacToe';
 import './TicTacToe.css';
 const App = () => {
@@ -7,7 +6,7 @@ const App = () => {
     return (
         <div >
           <h1 className ="pwinner">TicTacToe Game</h1>
-          {/* <Typography className ="gg"variant="h1" component="div" gutterBottom>TicTacToe Game</Typography> */}
+          
            <TicTacToe /> 
         </div>
     );

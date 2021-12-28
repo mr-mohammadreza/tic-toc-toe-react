@@ -99,10 +99,9 @@ const TicTacToe = () => {
 		return <button className = "aa" onClick={() => handleClick(num)}>{cells[num]}</button>;
 	};
 
-
 	return (
 		<div className='container'>
-			<Typography className ="pwinner"variant="h2" component="div" gutterBottom>Turn: {turn}</Typography>
+			<Typography className ="pwinner"variant="p" component="div" gutterBottom>Turn: {turn}</Typography>
 			<table id='finishgame'>
 				
 				<tbody>
