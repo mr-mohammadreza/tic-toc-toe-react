@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './TicTacToe.css';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 
 const TicTacToe = () => {
@@ -28,15 +29,13 @@ const TicTacToe = () => {
 
 		for (let combo in combos) {
 			combos[combo].forEach((pattern) => {
+				
 				if (
 					squares[pattern[0]] === '' ||
 					squares[pattern[1]] === '' ||
 					squares[pattern[2]] === ''
 				) {
-
 					// do nothing
-
-
 				} else if (
 					squares[pattern[0]] === squares[pattern[1]] &&
 					squares[pattern[1]] === squares[pattern[2]]
@@ -48,8 +47,8 @@ const TicTacToe = () => {
 						setWinner(squares[pattern[0]]);
 					}
 					
-
 				}
+				
 			});
 		}
 	};
@@ -81,6 +80,14 @@ const TicTacToe = () => {
 	
 		checkForWinner(squares);
 		setCells(squares);
+		if (squares[0] !='' && squares[1] !='' &&
+		squares[2] !='' && squares[3] !='' &&
+		squares[4] !='' && squares[5] !='' &&
+		squares[6] !='' && squares[7] !='' &&
+		squares[8] !=''  ) {
+					setWinner("No one ");
+			}
+		
 	};
 
 	const handleRestart = () => {
@@ -118,7 +125,7 @@ const TicTacToe = () => {
 			</table>
 			{winner && (
 				<>
-					<p>{winner} is the winner!</p>
+					<Typography className ="gg"variant="h5" component="div" gutterBottom>{winner} is the winner!</Typography>
 					<Button onClick={() => handleRestart()} variant="contained" color="warning">Play Again</Button>
 				
 				</>
