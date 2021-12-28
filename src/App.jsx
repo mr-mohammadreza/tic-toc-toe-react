@@ -6,8 +6,8 @@ const App = () => {
 
     return (
         <div >
-          {/* <h1>TicTacToe Game</h1> */}
-          <Typography className ="gg"variant="h1" component="div" gutterBottom>TicTacToe Game</Typography>
+          <h1 className ="pwinner">TicTacToe Game</h1>
+          {/* <Typography className ="gg"variant="h1" component="div" gutterBottom>TicTacToe Game</Typography> */}
            <TicTacToe /> 
         </div>
     );

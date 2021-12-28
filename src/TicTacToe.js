@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 
 
 const TicTacToe = () => {
-	const [turn, setTurn] = useState('x');
+	const [turn, setTurn] = useState('X');
 	const [cells, setCells] = useState(Array(9).fill(''));
 	const [winner, setWinner] = useState();
 
@@ -41,13 +41,19 @@ const TicTacToe = () => {
 					squares[pattern[1]] === squares[pattern[2]]
 				) {
 					
-					if (winner === 'x' || winner === 'o') {
+					if (winner === 'X' || winner === 'O') {
 						lock();
 					} else {
 						setWinner(squares[pattern[0]]);
 					}
 					
-				}
+				}else if (squares[0] !='' && squares[1] !='' &&
+				squares[2] !='' && squares[3] !='' &&
+				squares[4] !='' && squares[5] !='' &&
+				squares[6] !='' && squares[7] !='' &&
+				squares[8] !=''  ) {
+							setWinner("No one ");
+					}
 				
 			});
 		}
@@ -70,23 +76,16 @@ const TicTacToe = () => {
 
 		let squares = [...cells];
 
-		if (turn === 'x') {
-			squares[num] = 'x';
-			setTurn('o');
+		if (turn === 'X') {
+			squares[num] = 'X';
+			setTurn('O');
 		} else {
-			squares[num] = 'o';
-			setTurn('x');
+			squares[num] = 'O';
+			setTurn('X');
 		}
 	
 		checkForWinner(squares);
 		setCells(squares);
-		if (squares[0] !='' && squares[1] !='' &&
-		squares[2] !='' && squares[3] !='' &&
-		squares[4] !='' && squares[5] !='' &&
-		squares[6] !='' && squares[7] !='' &&
-		squares[8] !=''  ) {
-					setWinner("No one ");
-			}
 		
 	};
 
@@ -97,35 +96,36 @@ const TicTacToe = () => {
 	};
 
 	const Cell = ({ num }) => {
-		return <Button variant="outlined" onClick={() => handleClick(num)}>{cells[num]}</Button>;
+		return <button className = "aa" onClick={() => handleClick(num)}>{cells[num]}</button>;
 	};
 
-	// Cell.style.onClick = ;
+
 	return (
 		<div className='container'>
-			<table className=' notfinishgame' id='finishgame'>
-				Turn: {turn}
+			<Typography className ="pwinner"variant="h2" component="div" gutterBottom>Turn: {turn}</Typography>
+			<table id='finishgame'>
+				
 				<tbody>
-					<tr>
-						<Cell num={0} />
-						<Cell num={1} />
-						<Cell num={2} />
+					<tr className='kk'>
+						<td><Cell num={0} /></td>
+						<td><Cell num={1} /></td>
+						<td><Cell num={2} /></td>
 					</tr>
-					<tr>
-						<Cell num={3} />
-						<Cell num={4} />
-						<Cell num={5} />
+					<tr className='kk'>
+					<td><Cell num={3} /></td>
+					<td><Cell num={4} /></td>
+					<td><Cell num={5} /></td>
 					</tr>
-					<tr>
-						<Cell num={6} />
-						<Cell num={7} />
-						<Cell num={8} />
+					<tr className='kk'>
+					<td><Cell num={6} /></td>
+					<td><Cell num={7} /></td>
+					<td><Cell num={8} /></td>
 					</tr>
 				</tbody>
 			</table>
 			{winner && (
 				<>
-					<Typography className ="gg"variant="h5" component="div" gutterBottom>{winner} is the winner!</Typography>
+					<Typography className ="pwinner"variant="h5" component="div" gutterBottom>{winner} is the winner!</Typography>
 					<Button onClick={() => handleRestart()} variant="contained" color="warning">Play Again</Button>
 				
 				</>

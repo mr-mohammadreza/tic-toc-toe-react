@@ -5,13 +5,91 @@
 	justify-content: center;
 }
 
+.pwinner{
+	text-align: center;
+	color: darkgoldenrod;
+
+}
 table button {
 	border: 1px solid grey;
 	width: 100px;
 	height: 100px;
+
+	 background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+	border-radius: .5rem;
+	box-sizing: border-box;
+	color: #FFFFFF;
+	font-size: 45px;
+	text-decoration: none;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
 }
 
-.gg{
-	text-align: center;
-	color: darkgoldenrod;
+@media only screen and (max-width: 340px){
+
+	table button {
+		border: 1px solid grey;
+		width: 60px;
+		height: 60px;
+		font-size: 20px;
+	}
 }
+
+@media only screen and (max-width: 230px){
+
+	table button {
+		border: 1px solid grey;
+		width: 30px;
+		height: 30px;
+		font-size: 15px;
+	}
+	table td {
+		width: 20px;
+		height: 20px;
+	}
+
+	.pwinner{
+		text-align: center;
+		color: darkgoldenrod;
+		font-size: 15px;
+		
+		
+	}
+}
+
+
+
+
+
+
+/* button code for cells */
+
+.button-43 {
+	background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+	border-radius: .5rem;
+	box-sizing: border-box;
+	color: #FFFFFF;
+	display: flex;
+	font-size: 16px;
+	justify-content: center;
+	padding: 1rem 1.75rem;
+	text-decoration: none;
+	width: 100%;
+	border: 0;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+  }
+  
+  table button:hover {
+	background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+  }
+  
+
+
+  /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+  
+
