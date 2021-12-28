@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './TicTacToe.css';
-
-
+import Button from '@mui/material/Button';
 
 
 const TicTacToe = () => {
@@ -16,7 +15,7 @@ const TicTacToe = () => {
 				[3, 4, 5],
 				[6, 7, 8],
 			],
-			down: [ 
+			down: [
 				[0, 3, 6],
 				[1, 4, 7],
 				[2, 5, 8],
@@ -34,17 +33,36 @@ const TicTacToe = () => {
 					squares[pattern[1]] === '' ||
 					squares[pattern[2]] === ''
 				) {
+
 					// do nothing
+
+
 				} else if (
 					squares[pattern[0]] === squares[pattern[1]] &&
 					squares[pattern[1]] === squares[pattern[2]]
 				) {
-					setWinner(squares[pattern[0]]);
+					
+					if (winner === 'x' || winner === 'o') {
+						lock();
+					} else {
+						setWinner(squares[pattern[0]]);
+					}
+					
+
 				}
 			});
 		}
 	};
-    // play the game fill the squares with o and x and chech the winner 
+
+	function lock() {
+		Cell.setAttribute("disable", "true");
+	}
+	function unlock() {
+		
+		Cell.setAttribute("disable", "false");
+		
+		
+	}
 	const handleClick = (num) => {
 		if (cells[num] !== '') {
 			alert('already clicked');
@@ -54,30 +72,31 @@ const TicTacToe = () => {
 		let squares = [...cells];
 
 		if (turn === 'x') {
-			squares[num] = 'X';
+			squares[num] = 'x';
 			setTurn('o');
 		} else {
-			squares[num] = 'O';
+			squares[num] = 'o';
 			setTurn('x');
 		}
-
+	
 		checkForWinner(squares);
 		setCells(squares);
 	};
 
-    // restart the game 
 	const handleRestart = () => {
 		setWinner(null);
 		setCells(Array(9).fill(''));
+		unlock();
 	};
 
 	const Cell = ({ num }) => {
-		return <td onClick={() => handleClick(num)}>{cells[num]}</td>;
+		return <Button variant="outlined" onClick={() => handleClick(num)}>{cells[num]}</Button>;
 	};
 
+	// Cell.style.onClick = ;
 	return (
 		<div className='container'>
-			<table>
+			<table className=' notfinishgame' id='finishgame'>
 				Turn: {turn}
 				<tbody>
 					<tr>
@@ -99,9 +118,9 @@ const TicTacToe = () => {
 			</table>
 			{winner && (
 				<>
-					<p style={{ fontSize:50 }}>{winner} is the winner!</p>
-					<button onClick={() => handleRestart()}>Play Again</button>
-                    
+					<p>{winner} is the winner!</p>
+					<Button onClick={() => handleRestart()} variant="contained" color="warning">Play Again</Button>
+				
 				</>
 			)}
 		</div>

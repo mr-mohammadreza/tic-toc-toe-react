@@ -5,8 +5,9 @@
 	justify-content: center;
 }
 
-table td {
+table button {
 	border: 1px solid grey;
 	width: 100px;
 	height: 100px;
 }
+
